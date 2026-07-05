@@ -15,7 +15,9 @@ file(GLOB_RECURSE WIGI_SOURCES "${CMAKE_SOURCE_DIR}/src/*.cpp")
 add_executable (Wigi ${WIGI_SOURCES}
         include/window.h
         src/window.cpp
-        include/color.h)
+        include/color.h
+        include/button.h
+        src/button.cpp)
 
 target_include_directories(Wigi PRIVATE "${CMAKE_SOURCE_DIR}/include")
 
