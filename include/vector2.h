@@ -7,17 +7,19 @@ namespace wigi {
     struct Vector2 {
         Vector2() = default;
         Vector2(T x, T y) : x(x), y(y) {}
-        T x, y;
-        operator sf::Vector2<T>() { return sf::Vector2<T>(x, y); }
+        Vector2(const sf::Vector2<T>& v) : x(v.x), y(v.y) {}
 
-        Vector2 operator/(T scalar) {
+        T x, y;
+
+        operator sf::Vector2<T>() const { return sf::Vector2<T>(x, y); }
+
+        Vector2 operator/(T scalar) const {
             return Vector2(x / scalar, y / scalar);
         }
 
         Vector2 operator/(const Vector2& v) const {
             return Vector2(x / v.x, y / v.y);
         }
-
     };
 }
 

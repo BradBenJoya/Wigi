@@ -1,5 +1,6 @@
 ﻿#include "window.h"
 #include "button.h"
+#include <iostream>
 
 using namespace std;
 
@@ -18,6 +19,9 @@ int main() {
 
 	window.run([&](sf::RenderWindow& win) {
 		win.draw(button);
+		if (button.isClicked(win)) {
+			std::cout << "Clicked" << std::endl;
+		}
 	});
 
 	return 0;

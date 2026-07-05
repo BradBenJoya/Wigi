@@ -3,6 +3,8 @@
 #include "color.h"
 #include "vector2.h"
 #include "SFML/Graphics/RectangleShape.hpp"
+#include "SFML/Graphics/RenderWindow.hpp"
+#include <SFML/Window/Mouse.hpp>
 
 namespace wigi {
     class Button {
@@ -12,7 +14,8 @@ namespace wigi {
             return m_rect;
         }
 
-        bool isClicked() const;
+        bool isClicked(sf::RenderWindow& win);
+        bool isHeld(sf::RenderWindow& win);
 
         void setPosition(const Vector2<float>& position) {
             m_position = position;
@@ -53,6 +56,8 @@ namespace wigi {
         Vector2<float> m_size{1,1};
         Vector2<float> m_position{0,0};
         Color m_color{255,255,255};
+        static sf::Mouse m_mouse;
+        static bool m_wasMouseClicked;
     };
 } // Namespace wigi
 
