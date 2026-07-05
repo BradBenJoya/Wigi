@@ -58,6 +58,12 @@ namespace wigi {
         Color m_color{255,255,255};
         static sf::Mouse m_mouse;
         static bool m_wasMouseClicked;
+
+        bool isHovered(sf::RenderWindow& win) const {
+            Vector2<int> mousePos = sf::Mouse::getPosition(win);
+            Vector2 mousePosF(static_cast<float>(mousePos.x), static_cast<float>(mousePos.y));
+            return m_rect.getGlobalBounds().contains(mousePosF);
+        }
     };
 } // Namespace wigi
 

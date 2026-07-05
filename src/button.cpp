@@ -14,13 +14,9 @@ namespace wigi {
     }
 
     bool Button::isClicked(sf::RenderWindow& win) {
-        Vector2<int> mousePos = sf::Mouse::getPosition(win);
-        Vector2 mousePosF(static_cast<float>(mousePos.x), static_cast<float>(mousePos.y));
-
-        bool hovering = m_rect.getGlobalBounds().contains(mousePosF);
         bool isPressedNow = sf::Mouse::isButtonPressed(sf::Mouse::Left);
 
-        bool justClicked = hovering && isPressedNow && !m_wasMouseClicked;
+        bool justClicked = isHovered(win) && isPressedNow && !m_wasMouseClicked;
 
         m_wasMouseClicked = isPressedNow;
 
@@ -28,10 +24,7 @@ namespace wigi {
     }
 
     bool Button::isHeld(sf::RenderWindow &win) {
-        Vector2<int> mousePos = sf::Mouse::getPosition(win);
-        Vector2 mousePosF(static_cast<float>(mousePos.x), static_cast<float>(mousePos.y));
-
-        if (m_rect.getGlobalBounds().contains(mousePosF) && m_mouse.isButtonPressed(sf::Mouse::Left)) {
+        if (isHovered(win) && m_mouse.isButtonPressed(sf::Mouse::Left)) {
             return true;
         }
         return false;
