@@ -1,6 +1,7 @@
 #ifndef WIGI_BUTTON_H
 #define WIGI_BUTTON_H
 #include "color.h"
+#include "vector2.h"
 #include "SFML/Graphics/RectangleShape.hpp"
 
 namespace wigi {
@@ -13,6 +14,7 @@ namespace wigi {
     private:
         sf::RectangleShape m_rect;
         unsigned int m_width{1}, m_height{1};
+        Vector2<float> m_position;
         Color m_color{255,255,255};
     };
 } // Namespace wigi

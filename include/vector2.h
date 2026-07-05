@@ -1,5 +1,6 @@
 #ifndef WIGI_VECTOR2_H
 #define WIGI_VECTOR2_H
+#include "SFML/System/Vector2.hpp"
 
 namespace wigi {
     template <typename T>
@@ -7,6 +8,7 @@ namespace wigi {
         Vector2() = default;
         Vector2(T x, T y) : x(x), y(y) {}
         T x, y;
+        operator sf::Vector2<T>() { return sf::Vector2<T>(x, y); }
     };
 }
 
