@@ -19,7 +19,7 @@ namespace wigi {
                 }
             }
 
-            m_window.clear();
+            m_window.clear(sf::Color(backgroundColor.r, backgroundColor.g, backgroundColor.b));
             on_frame(m_window);
             m_window.display();
         }
