@@ -3,11 +3,10 @@
 
 using namespace std;
 
-int main()
-{
-	wigi::Window window(1920, 1080, "Wigi");
+int main() {
+	wigi::Window window(800, 600, "Wigi");
+	window.backgroundColor = {0,0,255};
 	window.run([&](sf::RenderWindow& win) {
-	   
 	});
 	return 0;
 }

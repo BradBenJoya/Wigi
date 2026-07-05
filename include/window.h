@@ -5,16 +5,20 @@
 #include <string>
 #include <functional>
 
+#include "color.h"
+
 namespace wigi {
     class Window {
         public:
             Window(unsigned const int  width, unsigned const int height, const std::string_view title);
 
-            const bool isOpen() const {
+            void run(const std::function<void(sf::RenderWindow&)>& on_frame);
+
+            bool isOpen() const {
                 return m_window.isOpen();
             }
 
-            void run(const std::function<void(sf::RenderWindow&)>& on_frame);
+            Color backgroundColor{0,0,0};
 
         private:
             sf::RenderWindow m_window;
