@@ -12,7 +12,7 @@ namespace wigi {
         bool isClicked(sf::RenderWindow& win);
         bool isHeld(sf::RenderWindow& win);
 
-    private:
+    protected:
         static sf::Mouse m_mouse;
         static bool m_wasMouseClicked;
 
