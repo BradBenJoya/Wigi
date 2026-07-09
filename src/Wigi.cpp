@@ -2,7 +2,6 @@
 #include "button.h"
 #include <iostream>
 
-using namespace std;
 
 int main() {
 	wigi::Window window(800, 600, "Wigi");
@@ -18,10 +17,10 @@ int main() {
 	button.setSize(wigi::Vector2<float>(400,400));
 
 	window.run([&](sf::RenderWindow& win) {
-		win.draw(button);
-		if (button.isClicked(win)) {
-			std::cout << "Clicked" << std::endl;
-		}
+	   win.draw(button);
+	   if (button.isClicked(win)) {
+		  std::cout << "Clicked at " << button.getPosition() << std::endl;
+	   }
 	});
 
 	return 0;
