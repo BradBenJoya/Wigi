@@ -19,7 +19,7 @@ namespace wigi {
             return m_rect;
         }
 
-        void setPosition(const Vector2<float>& position) {
+        virtual void setPosition(const Vector2<float>& position) {
             m_position = position;
             m_rect.setPosition(static_cast<sf::Vector2f>(m_position));
         }
@@ -37,13 +37,13 @@ namespace wigi {
             return m_color;
         }
 
-        void setSize(Vector2<float> size) {
+        virtual void setSize(Vector2<float> size) {
             m_size = size;
             m_rect.setSize(static_cast<sf::Vector2f>(size));
             m_rect.setOrigin(static_cast<sf::Vector2f>(m_size / 2.0f));
         }
 
-        void setSize(float width, float height) {
+        virtual void setSize(float width, float height) {
             m_size = Vector2<float>(width, height);
             m_rect.setSize(static_cast<sf::Vector2f>(m_size));
             m_rect.setOrigin(static_cast<sf::Vector2f>(m_size / 2.0f));
@@ -53,7 +53,7 @@ namespace wigi {
             return m_size;
         }
 
-    public:
+    protected:
         void draw(sf::RenderWindow& target) const {
             target.draw(m_rect);
         }

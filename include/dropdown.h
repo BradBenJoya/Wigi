@@ -3,6 +3,7 @@
 
 #include "button.h"
 #include <vector>
+#include <functional>
 
 namespace wigi {
     class Dropdown : public Button {
@@ -15,19 +16,21 @@ namespace wigi {
         void setSize(Vector2<float> size);
         void setSize(float width, float height);
 
+        void update(sf::RenderWindow& win);
+        void draw(sf::RenderWindow& win) const;
+
+        void onSelect(std::function<void(int)> callback) { m_onSelect = std::move(callback); }
+        int getSelectedItem() const { return m_selectedIndex; }
+        void clearSelection() { m_selectedIndex = -1; }
+
         std::vector<Button>& getItems() { return items; }
         const std::vector<Button>& getItems() const { return items; }
 
-        void draw(sf::RenderWindow& win) const;
-
-        mutable int currentItem{-1};
-        std::vector<Button> items{};
-
-    protected:
-
     private:
+        std::vector<Button> items{};
         mutable bool m_isOpen{false};
-        mutable int m_selectedIndex{-1};
+        int m_selectedIndex{-1};
+        std::function<void(int)> m_onSelect;
     };
 }
 
