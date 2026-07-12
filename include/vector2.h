@@ -6,102 +6,102 @@
 namespace wigi {
     template <typename T>
     struct Vector2 {
-        Vector2() = default;
-        Vector2(T x, T y) : x(x), y(y) {}
-        Vector2(const sf::Vector2<T>& v) : x(v.x), y(v.y) {}
+        constexpr Vector2() noexcept = default;
+        constexpr Vector2(T x, T y) noexcept : x(x), y(y) {}
+        constexpr Vector2(const sf::Vector2<T>& v) noexcept : x(v.x), y(v.y) {}
 
         T x, y;
 
-        operator sf::Vector2<T>() const {
+        constexpr operator sf::Vector2<T>() const noexcept {
             return sf::Vector2<T>(x, y);
         }
 
         // Arithmetic (vector-vector)
-        Vector2 operator+(const Vector2& v) const {
+        constexpr Vector2 operator+(const Vector2& v) const noexcept {
             return Vector2(x + v.x, y + v.y);
         }
 
-        Vector2 operator-(const Vector2& v) const {
+        constexpr Vector2 operator-(const Vector2& v) const noexcept {
             return Vector2(x - v.x, y - v.y);
         }
 
-        Vector2 operator*(const Vector2& v) const {
+        constexpr Vector2 operator*(const Vector2& v) const noexcept {
             return Vector2(x * v.x, y * v.y);
         }
 
-        Vector2 operator/(const Vector2& v) const {
+        constexpr Vector2 operator/(const Vector2& v) const noexcept {
             return Vector2(x / v.x, y / v.y);
         }
 
         // Arithmetic (vector-scalar)
-        Vector2 operator*(T scalar) const {
+        constexpr Vector2 operator*(T scalar) const noexcept {
             return Vector2(x * scalar, y * scalar);
         }
 
-        Vector2 operator/(T scalar) const {
+        constexpr Vector2 operator/(T scalar) const noexcept {
             return Vector2(x / scalar, y / scalar);
         }
 
         // Unary
-        Vector2 operator-() const {
+        constexpr Vector2 operator-() const noexcept {
             return Vector2(-x, -y);
         }
 
-        Vector2 operator+() const {
+        constexpr Vector2 operator+() const noexcept {
             return Vector2(x, y);
         }
 
         // Compound assignment (vector)
-        Vector2& operator+=(const Vector2& v) {
+        constexpr Vector2& operator+=(const Vector2& v) noexcept {
             x += v.x;
             y += v.y;
             return *this;
         }
 
-        Vector2& operator-=(const Vector2& v) {
+        constexpr Vector2& operator-=(const Vector2& v) noexcept {
             x -= v.x;
             y -= v.y;
             return *this;
         }
 
-        Vector2& operator*=(const Vector2& v) {
+        constexpr Vector2& operator*=(const Vector2& v) noexcept {
             x *= v.x;
             y *= v.y;
             return *this;
         }
 
-        Vector2& operator/=(const Vector2& v) {
+        constexpr Vector2& operator/=(const Vector2& v) noexcept {
             x /= v.x;
             y /= v.y;
             return *this;
         }
 
         // Compound assignment (scalar)
-        Vector2& operator*=(T scalar) {
+        constexpr Vector2& operator*=(T scalar) noexcept {
             x *= scalar;
             y *= scalar;
             return *this;
         }
 
-        Vector2& operator/=(T scalar) {
+        constexpr Vector2& operator/=(T scalar) noexcept {
             x /= scalar;
             y /= scalar;
             return *this;
         }
 
         // Comparison
-        bool operator==(const Vector2& v) const {
+        constexpr bool operator==(const Vector2& v) const noexcept {
             return x == v.x && y == v.y;
         }
 
-        bool operator!=(const Vector2& v) const {
+        constexpr bool operator!=(const Vector2& v) const noexcept {
             return !(*this == v);
         }
     };
 
     // Free functions
     template <typename T>
-    Vector2<T> operator*(T scalar, const Vector2<T>& v) {
+    constexpr Vector2<T> operator*(T scalar, const Vector2<T>& v) noexcept {
         return v * scalar;
     }
 
