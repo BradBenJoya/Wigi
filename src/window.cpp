@@ -2,7 +2,7 @@
 #include <SFML/Window/Event.hpp>
 
 namespace wigi {
-    Window::Window(unsigned const int  width, unsigned const int height, const std::string_view title) {
+    Window::Window(unsigned int width, unsigned int height, std::string_view title) {
         m_width = width;
         m_height = height;
         m_title = title;
@@ -19,7 +19,7 @@ namespace wigi {
                 }
             }
 
-            m_window.clear(sf::Color(backgroundColor.r, backgroundColor.g, backgroundColor.b));
+            m_window.clear(backgroundColor);
             on_frame(m_window);
             m_window.display();
         }

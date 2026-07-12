@@ -10,11 +10,11 @@
 namespace wigi {
     class Window {
         public:
-            Window(unsigned const int  width, unsigned const int height, const std::string_view title);
+            Window(unsigned int width, unsigned int height, std::string_view title);
 
             void run(const std::function<void(sf::RenderWindow&)>& on_frame);
 
-            bool isOpen() const {
+            bool isOpen() const noexcept {
                 return m_window.isOpen();
             }
 

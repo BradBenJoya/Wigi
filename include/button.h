@@ -9,19 +9,17 @@ namespace wigi {
     class Button : public Rectangle {
     public:
         using Rectangle::Rectangle;
-        bool isClicked(sf::RenderWindow& win);
-        bool isHeld(sf::RenderWindow& win);
-
-    protected:
-        static sf::Mouse m_mouse;
-        static bool m_wasMouseClicked;
+        bool isClicked(sf::RenderWindow& win) const;
+        bool isHeld(sf::RenderWindow& win) const;
 
         bool isHovered(sf::RenderWindow& win) const {
             Vector2<int> mousePos = sf::Mouse::getPosition(win);
-            Vector2 mousePosF(static_cast<float>(mousePos.x), static_cast<float>(mousePos.y));
-            return m_rect.getGlobalBounds().contains(mousePosF);
+            Vector2<float> mousePosF(static_cast<float>(mousePos.x), static_cast<float>(mousePos.y));
+            return m_rect.getGlobalBounds().contains(static_cast<sf::Vector2f>(mousePosF));
         }
+
+    protected:
+        mutable bool m_wasMouseClicked{false};
     };
 } // Namespace wigi
-
 #endif //WIGI_BUTTON_H
