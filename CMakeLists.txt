@@ -20,12 +20,10 @@ set_property(TARGET Wigi PROPERTY CXX_STANDARD 23)
 
 target_link_libraries(Wigi PRIVATE sfml-graphics sfml-window sfml-system sfml-audio sfml-network)
 
-if (WIN32)
-    add_custom_command(TARGET Wigi POST_BUILD
+add_custom_command(TARGET Wigi POST_BUILD
             COMMAND ${CMAKE_COMMAND} -E copy_if_different
             $<TARGET_FILE:sfml-graphics> $<TARGET_FILE:sfml-window>
             $<TARGET_FILE:sfml-system> $<TARGET_FILE:sfml-audio>
             $<TARGET_FILE:sfml-network>
             $<TARGET_FILE_DIR:Wigi>
-    )
-endif()
+)
