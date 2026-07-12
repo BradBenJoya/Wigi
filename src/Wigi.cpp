@@ -13,11 +13,11 @@ int main() {
     dropdown.addButton(item1);
 
     wigi::Button item2;
-    dropdown.addButton(item2);
     item2.setColor({0,0,255});
+    dropdown.addButton(item2);
 
     window.run([&](sf::RenderWindow& win) {
-       win.draw(dropdown);
+       dropdown.draw(win);
 
        if (dropdown.currentItem != -1) {
            std::cout << "Selected index: " << dropdown.currentItem << std::endl;

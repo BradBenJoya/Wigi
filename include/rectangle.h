@@ -1,13 +1,12 @@
 #ifndef WIGI_RECTANGLE_H
 #define WIGI_RECTANGLE_H
 #include "SFML/Graphics/RectangleShape.hpp"
-#include "SFML/Graphics/Drawable.hpp"
-#include "SFML/Graphics/RenderTarget.hpp"
+#include "SFML/Graphics/RenderWindow.hpp"
 #include "vector2.h"
 #include "color.h"
 
 namespace wigi {
-    class Rectangle : public sf::Drawable {
+    class Rectangle {
     public:
         Rectangle(unsigned int width = 1, unsigned int height = 1);
         virtual ~Rectangle() = default;
@@ -54,9 +53,9 @@ namespace wigi {
             return m_size;
         }
 
-    protected:
-        void draw(sf::RenderTarget& target, sf::RenderStates states) const override {
-            target.draw(m_rect, states);
+    public:
+        void draw(sf::RenderWindow& target) const {
+            target.draw(m_rect);
         }
 
         sf::RectangleShape m_rect;

@@ -15,16 +15,17 @@ namespace wigi {
         void setSize(Vector2<float> size);
         void setSize(float width, float height);
 
-        std::vector<Button>& getItems() { return m_items; }
-        const std::vector<Button>& getItems() const { return m_items; }
+        std::vector<Button>& getItems() { return items; }
+        const std::vector<Button>& getItems() const { return items; }
+
+        void draw(sf::RenderWindow& win) const;
 
         mutable int currentItem{-1};
+        std::vector<Button> items{};
 
     protected:
-        void draw(sf::RenderTarget& target, sf::RenderStates states) const override;
 
     private:
-        std::vector<Button> m_items{};
         mutable bool m_isOpen{false};
         mutable int m_selectedIndex{-1};
     };
